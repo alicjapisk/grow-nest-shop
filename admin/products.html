@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grow Nest Shop</title>
+    <script src="../src/js/admin.js" defer type="module"></script>
+    <link href="../src/css/styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Add products form</h1>
+    <form class="container">
+      <label>Product name</label>
+      <input type="text" name="name" id="name" />
+      <label>Price</label>
+      <input type="text" name="price" id="price" />
+      <label>Description</label>
+      <textarea type="text" name="description" id="description"></textarea>
+      <label>Stock</label>
+      <input type="number" name="stock" id="stock" />
+      <label>Category</label>
+      <select type="text" name="category" id="category">
+        <option>Potted Plants</option>
+        <option>Hanging Plants</option>
+        <option>Succulents & Cacti</option>
+        <option>Air-Purifying Plants</option>
+        <option>Flowering Plants</option>
+        <option>Shade-Loving Plants</option>
+        <option>Sun-Loving Plants</option>
+        <option>Beginner-Friendly Plants</option>
+        <option>Plant Sets</option>
+        <option>New Arrivals</option>
+        <option>On Sale</option>
+        <option>Accessories</option>
+      </select>
+      <label>Image</label>
+      <input type="file" name="image" id="image" accept="image/*" required />
+      <button type="submit">Add product</button>
+    </form>
+  </body>
+</html>
