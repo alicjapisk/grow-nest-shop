@@ -5,12 +5,12 @@ const productsList = document.querySelector("#products-list");
 getProducts((data) => {
   if (!data) return;
 
-  productsList.innerHTML = ""; // czyść listę przed renderowaniem
+  productsList.innerHTML = "";
 
   Object.values(data).forEach((product) => {
     const div = document.createElement("div");
     div.classList.add("product");
-    console.log(product);
+
     div.innerHTML = `
         <h3>${product.name}</h3>
         <p>${product.description}</p>
