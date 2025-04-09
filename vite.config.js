@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
 
-export default defineConfig(({ mode }) => ({
-  base: mode === "production" ? "/grow-nest-shop/" : "/",
-}));
+export default defineConfig({
+  base: "/grow-nest-shop/",
+});
