@@ -25,7 +25,7 @@ function createProductElement(product) {
   div.classList.add("product");
   div.innerHTML = `
     <div>
-      <img src="public/images/${product.image}" alt="${product.name}" width="180"/>
+      <img src="/images/${product.image}" alt="${product.name}" width="180"/>
     </div>
     <div>
       <h3>${product.name}</h3>
