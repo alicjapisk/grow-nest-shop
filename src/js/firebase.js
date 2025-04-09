@@ -1,20 +1,3 @@
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-// import {
-//   push,
-//   ref,
-//   getDatabase,
-//   onValue,
-// } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
-// import {
-//   getStorage,
-//   ref as storageRef,
-//   uploadBytes,
-//   getDownloadURL,
-// } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,13 +5,14 @@
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, push } from "firebase/database";
+import { getAnalytics } from "firebase/analytics";
+
 import {
-  getStorage,
-  ref as storageRef,
-  uploadBytes,
-  getDownloadURL,
-} from "firebase/storage";
+  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBLgMlecmSzmpOkUh2OelEkITyWo2iHlaI",
@@ -41,29 +25,19 @@ const firebaseConfig = {
   measurementId: "G-KGY1JP1SGN",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getDatabase(app);
-const storage = getStorage(app);
+const db = getFirestore(app);
 
-export function createProduct(productData) {
-  push(ref(db, "products"), productData);
+export async function createProduct(productData) {
+  await addDoc(collection(db, "products"), productData);
 }
 
 export function getProducts(callback) {
-  onValue(ref(db, "products"), (snapshot) => {
-    const data = snapshot.val();
+  onSnapshot(collection(db, "products"), (snapshot) => {
+    const data = {};
+    snapshot.forEach((doc) => {
+      data[doc.id] = doc.data();
+    });
     callback(data);
   });
 }
-
-export {
-  db,
-  storage,
-  ref, // ← z Realtime Database
-  push, // ← z Realtime Database
-  storageRef, // ← alias do storage.ref
-  uploadBytes,
-  getDownloadURL, // ← tu był błąd
-};
