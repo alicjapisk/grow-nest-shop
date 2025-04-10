@@ -4,15 +4,14 @@
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
 
 import {
   getFirestore,
   collection,
   addDoc,
   onSnapshot,
-} from "firebase/firestore";
+} from "https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBLgMlecmSzmpOkUh2OelEkITyWo2iHlaI",
